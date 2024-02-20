@@ -1,0 +1,320 @@
+* Z shell
+:PROPERTIES:
+:header-args: :tangle ~/.zshrc
+:END:
+
+Enable completion:
+#+begin_src shell
+autoload compinit && compinit
+#+end_src
+
+Use the completion menu:
+#+begin_src shell
+zstyle ':completion:*' menu select
+#+end_src
+
+Tab selects the next candidate in the completion menu. Use shift+tab to select
+the previous candidate:
+#+begin_src shell
+bindkey '^[[Z' reverse-menu-complete
+#+end_src
+
+Change directories by typing the directory name:
+#+begin_src shell
+setopt AUTO_CD
+#+end_src
+
+Save plenty of history in a =.zsh_history= file:
+#+begin_src shell
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+#+end_src
+
+Use Emacs key bindings:
+#+begin_src shell
+bindkey -e
+#+end_src
+
+Search through history using the arrow keys:
+#+begin_src shell
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+#+end_src
+
+Delete forwards, backspace backwards:
+#+begin_src shell
+bindkey '^?' backward-delete-char # backspace deletes backwards
+bindkey "^[[3~" delete-char # delete deletes forwards
+#+end_src
+
+Use alt+left and alt+right to move between words:
+#+begin_src shell
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;3D' backward-word
+#+end_src
+
+Set a simple prompt:
+#+begin_src shell
+export PROMPT='%1~%# '
+#+end_src
+
+Make searches in =less= case-insensitive:
+#+begin_src shell
+export LESS='--ignore-case'
+#+end_src
+
+Source a local zshrc if available:
+#+begin_src shell
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+#+end_src
+
+Integrate with =eat= in Emacs:
+#+begin_src shell
+if [ -n "$EAT_SHELL_INTEGRATION_DIR" ]; then
+    # Trim domain information from hostname in mode line
+    export HOST=$(hostname -s)
+    source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+fi
+#+end_src
+** zprofile
+:PROPERTIES:
+:header-args: :tangle ~/.zprofile
+:END:
+
+Source the =.profile= file.
+#+begin_src shell
+source $HOME/.profile
+#+end_src
+* Profile
+:PROPERTIES:
+:header-args: :tangle ~/.profile
+:END:
+
+Don't use control+S and control+Q for flow control:
+#+begin_src shell
+stty start undef
+stty stop undef
+#+end_src
+
+Use [[https://brew.sh][Homebrew]]:
+#+begin_src shell
+eval "$(/opt/homebrew/bin/brew shellenv)"
+#+end_src
+
+Enable colour in =ls=:
+#+begin_src shell
+export CLICOLOR=1
+#+end_src
+
+Use =vim= as the default editor:
+#+begin_src shell
+export EDITOR=vim
+#+end_src
+
+Add =~/.bin= to =PATH=:
+#+begin_src shell
+export PATH="$HOME/.bin:$PATH"
+#+end_src
+
+Use =vi= to launch vim:
+#+begin_src shell
+alias vi=vim
+#+end_src
+
+Use =g= for a compact git status:
+#+begin_src shell
+alias g='git status --short --branch'
+#+end_src
+
+Have =mkdir= always create intermediate directories:
+#+begin_src shell
+alias mkdir='mkdir -p'
+#+end_src
+
+Use =emacs= to run Emacs in the terminal:
+#+begin_src shell
+alias emacs='emacs --no-window-system'
+#+end_src
+
+Set up =nodenv= and =rbenv= if installed:
+#+begin_src shell
+whence nodenv &> /dev/null && eval "$(nodenv init -)"
+whence rbenv &> /dev/null && eval "$(rbenv init -)"
+#+end_src
+
+Source a local profile if available:
+#+begin_src shell
+[[ -f ~/.profile.local ]] && source ~/.profile.local
+#+end_src
+* Git
+:PROPERTIES:
+:header-args: :tangle ~/.gitconfig
+:END:
+
+#+begin_src conf
+[user]
+name = Alec Cursley
+#+end_src
+
+Look for an email address in the current repository or =gitconfig.local= only:
+#+begin_src conf
+useConfigOnly = true
+#+end_src
+
+Include local git configuration:
+#+begin_src conf
+[include]
+path = ~/.gitconfig.local
+#+end_src
+
+#+begin_src conf
+[push]
+default = simple
+#+end_src
+
+When running =git push= on a local branch with no remote branch, automatically
+create a remote branch with the same name as the local branch:
+#+begin_src conf
+autoSetupRemote = true
+#+end_src
+
+Use =main= as the default branch name:
+#+begin_src conf
+[init]
+defaultBranch = main
+#+end_src
+
+Set up some muscle-memory aliases:
+#+begin_src conf
+[alias]
+aa = add --all
+ci = commit
+co = checkout
+ds = diff --staged
+pf = push --force-with-lease
+tree = log --graph --pretty=oneline --decorate --abbrev-commit
+unstage = reset HEAD
+#+end_src
+** Global ignore file
+:PROPERTIES:
+:header-args: :tangle ~/.config/git/ignore :mkdirp yes
+:END:
+
+Ignore files created by macOS:
+#+begin_src text
+.DS_Store
+#+end_src
+* Vim
+:PROPERTIES:
+:header-args: :tangle ~/.vimrc
+:END:
+
+vi - but better!
+#+begin_src vim
+set nocompatible
+#+end_src
+
+Swap ~;~ and ~:~:
+#+begin_src vim
+noremap ; :
+noremap : ;
+#+end_src
+
+Use =H= and =L= as super-=H= and super-=L=:
+#+begin_src vim
+nnoremap H ^
+nnoremap L $
+#+end_src
+
+Hide the welcome message:
+#+begin_src vim
+set shortmess+=I
+#+end_src
+
+Enable off-screen buffers:
+#+begin_src vim
+set hidden
+#+end_src
+
+Keep at least two screen lines above and below the cursor:
+#+begin_src vim
+set scrolloff=2
+#+end_src
+
+Display tabs as two spaces:
+#+begin_src vim
+set tabstop=2
+set shiftwidth=2
+#+end_src
+
+Use spaces for indentation:
+#+begin_src vim
+set expandtab
+#+end_src
+
+Round indents to a multiple of two spaces:
+#+begin_src vim
+set shiftround
+#+end_src
+
+Use case-insensitive search when the search pattern has only lowercase
+characters:
+#+begin_src vim
+set smartcase
+#+end_src
+
+Search while typing:
+#+begin_src vim
+set incsearch
+#+end_src
+
+Highlight search matches:
+#+begin_src vim
+set hlsearch
+#+end_src
+
+Press return to clear search highlighting:
+#+begin_src vim
+nnoremap <cr> :nohlsearch<cr>:echo<cr>
+#+end_src
+
+Substitution patterns are global by default:
+#+begin_src vim
+set gdefault
+#+end_src
+
+Wrap lines:
+#+begin_src vim
+set wrap
+#+end_src
+
+Don't use swap files:
+#+begin_src vim
+set noswapfile
+#+end_src
+
+Enable completion:
+#+begin_src vim
+set wildmenu
+#+end_src
+
+Use control+S to save:
+#+begin_src vim
+inoremap <c-s> <esc>:w<cr>
+#+end_src
+
+Automatically re-read changed files:
+#+begin_src vim
+set autoread
+#+end_src
+
+Source a local vimrc if available:
+#+begin_src vim
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
+#+end_src
