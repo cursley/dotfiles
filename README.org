@@ -1,3 +1,21 @@
+#+TITLE: Alec's dotfiles
+
+This file includes configuration for:
+
+- [[#z-shell][Z shell]]
+- [[#git][Git]]
+- [[#vim][Vim]]
+
+I use this configuration on macOS.
+
+* Installation
+This file has metadata that [[https://orgmode.org/][Org mode]] uses to combine ("tangle") the source code
+blocks into the relevant configuration files.
+
+To install this configuration, overwriting existing files:
+
+1. Open this file in [[https://www.gnu.org/software/emacs/][Emacs]]
+2. Run the =org-babel-tangle= command (bound to =C-c C-v C-t= by default)
 * Z shell
 :PROPERTIES:
 :header-args: :tangle ~/.zshrc
