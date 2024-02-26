@@ -16,6 +16,12 @@ To install this configuration, overwriting existing files:
 
 1. Open this file in [[https://www.gnu.org/software/emacs/][Emacs]]
 2. Run the =org-babel-tangle= command (bound to =C-c C-v C-t= by default)
+
+or, from the command line:
+
+#+begin_src shell
+emacs README.org --batch --eval '(org-babel-tangle)'
+#+end_src
 * Z shell
 :PROPERTIES:
 :header-args: :tangle ~/.zshrc
