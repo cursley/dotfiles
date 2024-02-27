@@ -3,8 +3,16 @@
 This file includes configuration for:
 
 - [[#z-shell][Z shell]]
+- [[#profile][POSIX-compliant shells]]
 - [[#git][Git]]
 - [[#vim][Vim]]
+
+This configuration is presented in a [[https://www-cs-faculty.stanford.edu/~knuth/lp.html][literate programming]] style, combining code
+(in this case, configuration) and documentation. Configuration syntax can be
+quite terse, so this is an interesting way to add rationale and extra notes.
+
+I aim to keep this configuration lightweight. These are all well-designed tools,
+and their default behaviour generally works well for me.
 
 I use this configuration on macOS.
 
