@@ -94,9 +94,9 @@ Set a simple prompt:
 export PROMPT='%1~%# '
 #+end_src
 
-Make searches in =less= case-insensitive:
+Make searches in =less= case-insensitive (=--ignore-case=). Pass ANSI colour escape sequences to the terminal (=-R=) to show colourful git output correctly.
 #+begin_src shell
-export LESS='--ignore-case'
+export LESS='-R --ignore-case'
 #+end_src
 
 Source a local zshrc if available:
