@@ -109,15 +109,6 @@ Source a local zshrc if available:
 #+begin_src shell
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 #+end_src
-
-Integrate with =eat= in Emacs:
-#+begin_src shell
-if [ -n "$EAT_SHELL_INTEGRATION_DIR" ]; then
-    # Trim domain information from hostname in mode line
-    export HOST=$(hostname -s)
-    source "$EAT_SHELL_INTEGRATION_DIR/zsh"
-fi
-#+end_src
 ** zprofile
 :PROPERTIES:
 :header-args: :tangle ~/.zprofile
