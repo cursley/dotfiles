@@ -56,6 +56,12 @@ Change directories by typing the directory name:
 setopt AUTO_CD
 #+end_src
 
+Push all directory changes onto a stack:
+#+begin_src shell
+setopt AUTO_PUSHD
+#+end_src
+Use =popd= to go back to the previous working directory.
+
 Save plenty of history in a =.zsh_history= file:
 #+begin_src shell
 HISTFILE=$HOME/.zsh_history
