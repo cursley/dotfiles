@@ -171,10 +171,9 @@ Use =emacs= to run Emacs in the terminal:
 alias emacs='emacs --no-window-system'
 #+end_src
 
-Set up =nodenv= and =rbenv= if installed:
+Set up =nodenv= if installed:
 #+begin_src shell
 whence nodenv &> /dev/null && eval "$(nodenv init -)"
-whence rbenv &> /dev/null && eval "$(rbenv init -)"
 #+end_src
 
 Source a local profile if available:
