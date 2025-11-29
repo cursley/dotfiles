@@ -17,8 +17,8 @@ and their default behaviour generally works well for me.
 I use this configuration on macOS.
 
 * Installation
-This file has metadata that [[https://orgmode.org/][Org mode]] uses to combine ("tangle") the source code
-blocks into the relevant configuration files.
+This file contains metadata that [[https://orgmode.org/][Org mode]] uses to combine ("tangle") the source
+code blocks into the relevant configuration files.
 
 To install this configuration, overwriting existing files:
 
