@@ -258,6 +258,12 @@ Use =H= and =L= as super-=H= and super-=L=:
 #+begin_src vim
 nnoremap H ^
 nnoremap L $
+
+vnoremap H ^
+vnoremap L $
+
+onoremap H ^
+onoremap L $
 #+end_src
 
 Hide the welcome message:
