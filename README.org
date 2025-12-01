@@ -148,9 +148,9 @@ Use =vim= as the default editor:
 export EDITOR=vim
 #+end_src
 
-Add =~/.bin= to =PATH=:
+Add =~/.bin= and =~/.local/bin= to =PATH=:
 #+begin_src shell
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 #+end_src
 
 Use =vi= to launch vim:
